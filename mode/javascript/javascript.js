@@ -23,8 +23,9 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
 
   var keywords = function(){
     function kw(type) {return {type: type, style: "keyword"};}
+    function sp(type) {return {type: type, style: type };}
     var A = kw("keyword a"), B = kw("keyword b"), C = kw("keyword c"), D = kw("keyword d");
-    var operator = kw("operator"), atom = {type: "atom", style: "atom"};
+    var operator = kw("operator");
 
     var jsKeywords = {
       "if": kw("if"), "while": A, "with": A, "else": B, "do": B, "try": B, "finally": B,
@@ -33,9 +34,9 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
       "function": kw("function"), "catch": kw("catch"),
       "for": kw("for"), "switch": kw("switch"), "case": kw("case"), "default": kw("default"),
       "in": operator, "typeof": operator, "instanceof": operator,
-      "true": kw("boolean"), "false": kw("boolean"),
-      "null": kw("null"), "undefined": kw("undefined"),
-      "NaN": kw("number"), "Infinity": kw("number"),
+      "true": sp("boolean"), "false": sp("boolean"),
+      "null": sp("null"), "undefined": sp("undefined"),
+      "NaN": sp("number"), "Infinity": sp("number"),
       "this": kw("this"), "class": kw("class"), "super": kw("atom"),
       "yield": C, "export": kw("export"), "import": kw("import"), "extends": C,
       "await": C
